@@ -110,7 +110,8 @@ const SignUp = ({navigation}) => {
             if (errors.length) { 
               alert('please fill all the fields and check all the boxes')
             } else {
-              SetupHelper.setItemAsyncStorage('loginCredential', txtEmail)
+              // SetupHelper.setItemAsyncStorage('loginCredential', txtEmail)
+              navigation.navigate('SignUpSucceful')
             }
         }}
       >

@@ -29,16 +29,16 @@ const signIn = ({navigation}) => {
     setEmailPhone('eliashousseini@gmail.com')
   }
 
-  useEffect(() => {
-    SetupHelper.getItemAsyncStorage('loginCredential').then((item) => {
-      // nothing in the local storage
-      if (item == null || item == undefined) {
-        console.log('no login Credential in storage')
-      } else {
-        setLoginCredentialStorage(item)
-      }
-    })
-  })
+  // useEffect(() => {
+  //   SetupHelper.getItemAsyncStorage('loginCredential').then((item) => {
+  //     // nothing in the local storage
+  //     if (item == null || item == undefined) {
+  //       console.log('no login Credential in storage')
+  //     } else {
+  //       setLoginCredentialStorage(item)
+  //     }
+  //   })
+  // })
 
     return(
     <SafeAreaView style={styles.container}>
@@ -106,9 +106,9 @@ const signIn = ({navigation}) => {
         if (errors.length) { 
           alert('please fill all the fields and check all the boxes')
         } else {
-        if(loginCredentialStorage == txtFirstName)
+        // if(loginCredentialStorage == txtFirstName)
           navigation.navigate('LoginSuccessful')
-        else alert('please sign up')
+        // else alert('please sign up')
         }
         }}
       >
