@@ -21,8 +21,8 @@ Appstore: _coming soon_
 
 ## 📷 Screenshots
 
-![screenshot |720x1280 ](screenshots/signIN.png)
-![screenshot | 720x1280](screenshots/signUP.png)
+![screenshot |360x640 ](screenshots/signIN.png)
+![screenshot | 360x640](screenshots/signUP.png)
 
 ## 🎉 Features
 
