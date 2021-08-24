@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 
 import CheckBox from '@react-native-community/checkbox'
-import SetupHelper from '../SetupHelper';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const signIn = ({navigation}) => {
     const [txtPhoneEmail, setPhoneEmail] = React.useState("");
@@ -50,9 +51,13 @@ const signIn = ({navigation}) => {
         if (errors.length) { 
           alert('please fill all the fields and check all the boxes')
         } else {
-        // if(loginCredentialStorage == txtPhoneEmail)
+          getData().then(item => {
+            if(item.emailPhone === txtPhoneEmail){
           navigation.navigate('LoginSuccessful')
-        // else alert('please sign up')
+            } else {
+              alert('please send up !')
+            }
+          })
         }
   }
 
@@ -60,17 +65,14 @@ const signIn = ({navigation}) => {
     navigation.navigate('SignUp')
   }
 
-  // useEffect(() => {
-  //   SetupHelper.getItemAsyncStorage('loginCredential').then((item) => {
-  //     // nothing in the local storage
-  //     if (item == null || item == undefined) {
-  //       console.log('no login Credential in storage')
-  //     } else {
-  //       setLoginCredentialStorage(item)
-  //     }
-  //   })
-  // })
-
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('@storage_Key')
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch(e) {
+      // error reading value
+    }
+  }
     return(
     <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}>Sign In</Text>
@@ -105,22 +107,6 @@ const signIn = ({navigation}) => {
         placeholder = 'Password'
         secureTextEntry = {true}
       />
-            {/* <SafeAreaView style = {styles.confirmation}>
-      <CheckBox
-          value={isSelected}
-          onValueChange={setSelection}
-          style={styles.checkbox}
-          tintColors={{ true: 'white', false: 'white' }}
-          lineWidth={3.0}
-          boxType='square'
-      />
-      <SafeAreaView style = {styles.confirmationArea}>      
-      <Text style={styles.rememberMe}>Remember me</Text>
-      <Text style={styles.forgotPassword} onPress={
-      onPressForgotPassword
-    }
-      >Forgot Password ?</Text></SafeAreaView>
-      </SafeAreaView> */}
             <SafeAreaView style = {styles.termsAndConditions}>
       <CheckBox
           value={isSelected}
@@ -136,7 +122,7 @@ const signIn = ({navigation}) => {
         <Text style = {styles.termsAndConditionsText1}>Remember me</Text>
         </View>
       <View>
-      <Text style = {styles.termsAndConditionsText2}>Forgot Password ?</Text>
+      <Text style = {styles.termsAndConditionsText2} onPress={onPressForgotPassword}>Forgot Password ?</Text>
       </View>
 
       </SafeAreaView>
@@ -301,6 +287,7 @@ const styles = StyleSheet.create({
     termsAndConditionsText2: {
       color: 'white',
       // backgroundColor: 'green',
+      textDecorationLine: 'underline',
     }
     
   });
