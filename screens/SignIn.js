@@ -72,6 +72,7 @@ const signIn = ({navigation}) => {
         onChangeText={setPassword}
         value={password}
         placeholder = 'Password'
+        secureTextEntry = {true}
       />
             <SafeAreaView style = {styles.confirmation}>
       <CheckBox
