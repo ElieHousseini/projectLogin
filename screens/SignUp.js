@@ -19,17 +19,52 @@ const SignUp = ({navigation}) => {
   const [isSelected1, setSelection1] = useState(false);
   const [isSelected2, setSelection2] = useState(false);
   const [txtEmail, setTextEmail] = React.useState("");
-  const [emailPhone, setEmailPhone] = React.useState('+96170838972')
+  const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('+96170838972')
   let errors = []
 
   const onPressPhone = () => {
-    if(emailPhone == 'eliashousseini@gmail.com')
-    setEmailPhone('+96170838972')
+    if(emailPhonePlaceHolder == 'eliashousseini@gmail.com')
+    setEmailPhonePlaceHolder('+96170838972')
   }
   const onPressEmail = () => {
-    if(emailPhone == '+96170838972')
-    setEmailPhone('eliashousseini@gmail.com')
+    if(emailPhonePlaceHolder == '+96170838972')
+    setEmailPhonePlaceHolder('eliashousseini@gmail.com')
   }
+
+  const onPressSubmitCheck = ()=>{
+      if(
+          txtFirstName.trim() === ""
+      ){
+        errors.push('firstName')
+      }
+      if(
+        txtLastName.trim() === ""
+      ){
+        errors.push('lastName')
+      }
+      if(txtEmail.trim() === ""){
+        errors.push('email')
+      }
+      if(!isSelected1){
+        errors.push('checkbox1')
+      }
+      if(!isSelected2){
+        errors.push('checkbox2')
+      }
+
+      if (errors.length) { 
+        alert('please fill all the fields and check all the boxes')
+      } else {
+        // SetupHelper.setItemAsyncStorage('loginCredential', txtEmail)
+        navigation.navigate('SignUpSucceful')
+      }
+  
+  }
+
+  const onPressSignIn = () => {
+    navigation.navigate('SignIn')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}>Sign Up</Text>
@@ -67,7 +102,7 @@ const SignUp = ({navigation}) => {
         style={styles.emailInput}
         onChangeText={setTextEmail}
         value={txtEmail}
-        placeholder = {emailPhone}
+        placeholder = {emailPhonePlaceHolder}
       />
       <SafeAreaView style = {styles.confirmation}>
       <CheckBox
@@ -86,40 +121,11 @@ const SignUp = ({navigation}) => {
       </SafeAreaView>
       <TouchableOpacity
         style={styles.verify}
-        onPress={()=>{
-            if(
-                txtFirstName.trim() === ""
-            ){
-              errors.push('firstName')
-            }
-            if(
-              txtLastName.trim() === ""
-            ){
-              errors.push('lastName')
-            }
-            if(txtEmail.trim() === ""){
-              errors.push('email')
-            }
-            if(!isSelected1){
-              errors.push('checkbox1')
-            }
-            if(!isSelected2){
-              errors.push('checkbox2')
-            }
-
-            if (errors.length) { 
-              alert('please fill all the fields and check all the boxes')
-            } else {
-              // SetupHelper.setItemAsyncStorage('loginCredential', txtEmail)
-              navigation.navigate('SignUpSucceful')
-            }
-        }}
+        onPress={onPressSubmitCheck}
       >
         <Text style={styles.verifyText}>Verify</Text>
       </TouchableOpacity>
-      <Text style={styles.signIn}>Already have an Acount ? <Text style = {styles.underline} onPress={()=> {
-        navigation.navigate('SignIn')
-      }}>Sign In</Text> </Text>
+      <Text style={styles.signIn}>Already have an Acount ? <Text style = {styles.underline} onPress={onPressSignIn}>Sign In</Text> </Text>
     </SafeAreaView>
   );
 };
@@ -136,18 +142,19 @@ const styles = StyleSheet.create({
     margin: 12,
     textAlign: 'center',
     color: 'white',
-    fontSize: 30
+    fontSize: 30,
   },
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 1,
+    // borderWidth: 1,
     backgroundColor: '#FFFFFF'
   },
   phoneMail:{
     flexDirection: 'row',
-    paddingHorizontal: 13,
     height: 40,
+    marginLeft: 12,
+    marginRight: 12,
   },
   phoneButton: {
     alignItems: "center",

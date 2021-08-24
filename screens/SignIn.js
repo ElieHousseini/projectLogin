@@ -13,20 +13,51 @@ import CheckBox from '@react-native-community/checkbox'
 import SetupHelper from '../SetupHelper';
 
 const signIn = ({navigation}) => {
-    const [txtFirstName, setFirstName] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [txtPhoneEmail, setPhoneEmail] = React.useState("");
+    const [txtPassword, setPassword] = React.useState("");
     const [isSelected, setSelection] = useState(false);
-    const [emailPhone, setEmailPhone] = React.useState('+96170838972')
+    const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('+96170838972')
     let errors = []
     const [loginCredentialStorage, setLoginCredentialStorage] = React.useState('')
 
   const onPressPhone = () => {
-    if(emailPhone == 'eliashousseini@gmail.com')
-    setEmailPhone('+96170838972')
+    if(emailPhonePlaceHolder == 'eliashousseini@gmail.com')
+    setEmailPhonePlaceHolder('+96170838972')
   }
   const onPressEmail = () => {
-    if(emailPhone == '+96170838972')
-    setEmailPhone('eliashousseini@gmail.com')
+    if(emailPhonePlaceHolder == '+96170838972')
+    setEmailPhonePlaceHolder('eliashousseini@gmail.com')
+  }
+
+  const onPressForgotPassword = () => {
+    alert('You forgot your password.')
+  }
+
+  const onPressVerify = () => {
+        if(
+          txtPhoneEmail.trim() === ""
+        ){
+          errors.push('firstName')
+        }
+        if(
+          txtPassword.trim() === ""
+        ){
+          errors.push('lastName')
+        }
+        if(!isSelected){
+          errors.push('checkbox1')
+        }
+        if (errors.length) { 
+          alert('please fill all the fields and check all the boxes')
+        } else {
+        // if(loginCredentialStorage == txtPhoneEmail)
+          navigation.navigate('LoginSuccessful')
+        // else alert('please sign up')
+        }
+  }
+
+  const onPressSignUp = () => {
+    navigation.navigate('SignUp')
   }
 
   // useEffect(() => {
@@ -63,14 +94,14 @@ const signIn = ({navigation}) => {
       
       <TextInput
         style={styles.emailInput}
-        onChangeText={setFirstName}
-        value={txtFirstName}
-        placeholder = {emailPhone}
+        onChangeText={setPhoneEmail}
+        value={txtPhoneEmail}
+        placeholder = {emailPhonePlaceHolder}
       />
             <TextInput
         style={styles.input}
         onChangeText={setPassword}
-        value={password}
+        value={txtPassword}
         placeholder = 'Password'
         secureTextEntry = {true}
       />
@@ -83,35 +114,14 @@ const signIn = ({navigation}) => {
       />
       <SafeAreaView style = {styles.confirmationArea}>      
       <Text style={styles.rememberMe}>Remember me</Text>
-      <Text style={styles.forgotPassword} onPress={() => {
-        alert('You forgot your password.')
-      }}>Forgot Password ?</Text></SafeAreaView>
+      <Text style={styles.forgotPassword} onPress={
+      onPressForgotPassword
+    }
+      >Forgot Password ?</Text></SafeAreaView>
       </SafeAreaView>
       <TouchableOpacity
         style={styles.verify}
-        onPress={()=>{
-          // navigation.navigate('LoginSuccessful')
-        if(
-            txtFirstName.trim() === ""
-        ){
-          errors.push('firstName')
-        }
-        if(
-          password.trim() === ""
-        ){
-          errors.push('lastName')
-        }
-        if(!isSelected){
-          errors.push('checkbox1')
-        }
-        if (errors.length) { 
-          alert('please fill all the fields and check all the boxes')
-        } else {
-        // if(loginCredentialStorage == txtFirstName)
-          navigation.navigate('LoginSuccessful')
-        // else alert('please sign up')
-        }
-        }}
+        onPress={onPressVerify}
       >
         <Text style={styles.verifyText} 
         >Sign In</Text>
@@ -136,7 +146,7 @@ const signIn = ({navigation}) => {
       </View>
     </View>
     <Text style={styles.signIn}>Already have an Acount ?
-        <Text style = {styles.underline} onPress={()=>{navigation.navigate('SignUp')}}> Sign Up</Text> 
+        <Text style = {styles.underline} onPress={onPressSignUp}> Sign Up</Text> 
     </Text>
     </SafeAreaView>
     )
@@ -153,17 +163,19 @@ const styles = StyleSheet.create({
       margin: 12,
       textAlign: 'center',
       color: 'white',
-      fontSize: 30
+      fontSize: 30,
     },
     input: {
       height: 40,
       margin: 12,
-      borderWidth: 1,
+      // borderWidth: 1,
       backgroundColor: '#FFFFFF'
     },
     phoneMail:{
       flexDirection: 'row',
-      paddingHorizontal: 13,
+      // paddingHorizontal: 13,
+      marginLeft: 12,
+      marginRight: 12,
       height: 40,
     },
     phoneButton: {
