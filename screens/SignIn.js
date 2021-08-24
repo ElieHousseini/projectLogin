@@ -135,8 +135,8 @@ const signIn = ({navigation}) => {
       <Image source={require('../Assets/facebook.png')}/>
       </View>
     </View>
-    <Text style={styles.signIn}>Already have an Acount ? 
-        <Text style = {styles.underline} onPress={()=>{navigation.navigate('SignUp')}}>Sign Up</Text> 
+    <Text style={styles.signIn}>Already have an Acount ?
+        <Text style = {styles.underline} onPress={()=>{navigation.navigate('SignUp')}}> Sign Up</Text> 
     </Text>
     </SafeAreaView>
     )
