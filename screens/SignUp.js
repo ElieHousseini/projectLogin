@@ -104,20 +104,42 @@ const SignUp = ({navigation}) => {
         value={txtEmail}
         placeholder = {emailPhonePlaceHolder}
       />
-      <SafeAreaView style = {styles.confirmation}>
+      {/* <SafeAreaView style = {styles.confirmation}>
       <CheckBox
+      style={styles.checkbox}
           value={isSelected1}
           onValueChange={setSelection1}
           tintColors={{ true: 'white', false: 'white' }}
+          lineWidth={3.0}
+          boxType='square'
       />
       <Text style={styles.TexttermsAndConditions}>I agree to User Terms and Conditions</Text>
+      </SafeAreaView> */}
+      <SafeAreaView style = {styles.termsAndConditions}>
+      <CheckBox
+          value={isSelected2}
+          onValueChange={setSelection2}
+          tintColors={{ true: 'white', false: 'white' }}
+          lineWidth={2.0}
+          boxType='square'
+          style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
+          // style={{width: 2}}
+      />
+      <SafeAreaView><Text style = {styles.termsAndConditionsText}>I agree to User Terms and Conditions</Text></SafeAreaView>
+
       </SafeAreaView>
       <SafeAreaView style = {styles.verification}>
       <CheckBox
           value={isSelected2}
           onValueChange={setSelection2}
+          tintColors={{ true: 'white', false: 'white' }}
+          lineWidth={2.0}
+          boxType='square'
+          style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
+          // style={{width: 2}}
       />
       <Text>I am not a robot</Text>
+
       </SafeAreaView>
       <TouchableOpacity
         style={styles.verify}
@@ -212,6 +234,22 @@ const styles = StyleSheet.create({
   },
   TexttermsAndConditions:{
     color:'white'
+  },
+  checkbox: {
+    marginRight: 10,
+    width: 20, height: 20,
+    // backgroundColor: 'red',
+    // height: 12
+  },
+  termsAndConditions:{
+    flexDirection: 'row',
+    alignItems: "center",
+    margin: 10,
+    // backgroundColor: 'white',
+    height: 50,
+  },
+  termsAndConditionsText: {
+    color: 'white',
   }
 
 });

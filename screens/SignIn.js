@@ -105,12 +105,14 @@ const signIn = ({navigation}) => {
         placeholder = 'Password'
         secureTextEntry = {true}
       />
-            <SafeAreaView style = {styles.confirmation}>
+            {/* <SafeAreaView style = {styles.confirmation}>
       <CheckBox
           value={isSelected}
           onValueChange={setSelection}
-          // style={styles.checkbox}
+          style={styles.checkbox}
           tintColors={{ true: 'white', false: 'white' }}
+          lineWidth={3.0}
+          boxType='square'
       />
       <SafeAreaView style = {styles.confirmationArea}>      
       <Text style={styles.rememberMe}>Remember me</Text>
@@ -118,6 +120,28 @@ const signIn = ({navigation}) => {
       onPressForgotPassword
     }
       >Forgot Password ?</Text></SafeAreaView>
+      </SafeAreaView> */}
+            <SafeAreaView style = {styles.termsAndConditions}>
+      <CheckBox
+          value={isSelected}
+          onValueChange={setSelection}
+          tintColors={{ true: 'white', false: 'white' }}
+          lineWidth={2.0}
+          boxType='square'
+          style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
+          // style={{width: 2}}
+      />
+      <SafeAreaView style={{flexDirection: 'row', width: '80%', justifyContent:'space-between'}}>
+        <View>
+        <Text style = {styles.termsAndConditionsText1}>Remember me</Text>
+        </View>
+      <View>
+      <Text style = {styles.termsAndConditionsText2}>Forgot Password ?</Text>
+      </View>
+
+      </SafeAreaView>
+
+
       </SafeAreaView>
       <TouchableOpacity
         style={styles.verify}
@@ -235,6 +259,7 @@ const styles = StyleSheet.create({
     },
     confirmationArea:{
         flexDirection: 'row',
+        // backgroundColor: 'green'
     },
     socialMediaText:{
       textAlign: 'center', color: 'white'
@@ -255,6 +280,28 @@ const styles = StyleSheet.create({
       flexDirection: 'row', alignItems: 'center',
       height: '7%'
     },
+    checkbox: {
+      marginRight: 10,
+      width: 20, height: 20,
+      // backgroundColor: 'red',
+      // height: 12
+    },
+    termsAndConditions:{
+      flexDirection: 'row',
+      alignItems: "center",
+      margin: 10,
+      // backgroundColor: 'white',
+      height: 50,
+      
+    },
+    termsAndConditionsText1: {
+      color: 'white',
+      // backgroundColor: 'red',
+    },
+    termsAndConditionsText2: {
+      color: 'white',
+      // backgroundColor: 'green',
+    }
     
   });
 export default signIn
