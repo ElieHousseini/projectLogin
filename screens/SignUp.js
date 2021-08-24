@@ -67,13 +67,12 @@ const SignUp = ({navigation}) => {
       if (errors.length) { 
         alert('please fill all the fields and check all the boxes')
       } else {
-        // SetupHelper.setItemAsyncStorage('loginCredential', txtEmail)
         storeData({
           firstName: txtFirstName,
           lastName: txtLastName,
           emailPhone: txtEmail
         })
-        // navigation.navigate('SignUpSucceful')
+        navigation.navigate('SignUpSucceful')
       }
   
   }

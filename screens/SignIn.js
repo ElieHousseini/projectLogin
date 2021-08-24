@@ -45,19 +45,32 @@ const signIn = ({navigation}) => {
         ){
           errors.push('lastName')
         }
-        if(!isSelected){
-          errors.push('checkbox1')
-        }
+        // if(!isSelected){
+        //   errors.push('checkbox1')
+        // }
         if (errors.length) { 
           alert('please fill all the fields and check all the boxes')
         } else {
           getData().then(item => {
-            if(item.emailPhone === txtPhoneEmail){
-          navigation.navigate('LoginSuccessful')
-            } else {
-              alert('please send up !')
+            if(item === null || item === undefined){
+              // console.log(item.emailPhone)
+              alert('please sign up !')
+            } 
+            else if(item.emailPhone !== txtPhoneEmail){
+              alert('please sign up !')
+            }
+            else if( item.emailPhone === txtPhoneEmail){
+              if(isSelected){
+                // errors.push('checkbox1')
+                storeData({
+                  login: true
+                })
+    
+              }
+            navigation.navigate('LoginSuccessful')
             }
           })
+
         }
   }
 
@@ -73,6 +86,17 @@ const signIn = ({navigation}) => {
       // error reading value
     }
   }
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('@storage_Key', jsonValue)
+    } catch (e) {
+      // saving error
+      alert(e)
+    }
+  }
+
     return(
     <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}>Sign In</Text>
