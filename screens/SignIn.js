@@ -90,7 +90,7 @@ const signIn = ({navigation}) => {
         style={styles.verify}
         onPress={()=>{
           // navigation.navigate('LoginSuccessful')
-          if(
+        if(
             txtFirstName.trim() === ""
         ){
           errors.push('firstName')
@@ -115,13 +115,24 @@ const signIn = ({navigation}) => {
         <Text style={styles.verifyText} 
         >Sign In</Text>
       </TouchableOpacity>
-      <Text style={styles.socialMediaText}>---------------------------- Or Sign In using ----------------------------</Text>
-
-      <View style={styles.socialMediaItems}
+        <View style={styles.barPosition}>
+        <View style={styles.bar} />
+        <View>
+        <Text style={styles.socialMediaText}> Or Sign In using </Text>
+        </View>
+        <View style={styles.bar} />
+        </View>
+        <View style={styles.socialMediaItems}
       >
-      <View style={styles.socialMediaItem} />
-      <View style={styles.socialMediaItem} />
-      <View style={styles.socialMediaItem} />
+      <View style={styles.socialMediaItem} >
+      <Image source={require('../Assets/google.png')}/>
+      </View>
+      <View style={styles.socialMediaItem} >
+      <Image source={require('../Assets/linkedin.png')}/>
+        </View>
+      <View style={styles.socialMediaItem} >
+      <Image source={require('../Assets/facebook.png')}/>
+      </View>
     </View>
     <Text style={styles.signIn}>Already have an Acount ? 
         <Text style = {styles.underline} onPress={()=>{navigation.navigate('SignUp')}}>Sign Up</Text> 
@@ -213,16 +224,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     socialMediaText:{
-        height: 40,
-        margin: 12,
-        textAlign: 'center',
-        color: 'white',
+      textAlign: 'center', color: 'white'
     },
     socialMediaItems:{
-        flexDirection: "row", height: 50, margin: 10
+        flexDirection: "row", height: 50, margin: 10,
     },
     socialMediaItem:{
-        flex: 1, backgroundColor: "red", marginRight: 10
-    }
+        flex: 1, backgroundColor: "white", marginRight: 10,
+        alignItems:'center',
+        justifyContent: 'center'
+    },
+    bar: {
+      flex: 1, height: 1, backgroundColor: 'white',
+      margin: 10
+    },
+    barPosition: {
+      flexDirection: 'row', alignItems: 'center',
+      height: '7%'
+    },
+    
   });
 export default signIn
