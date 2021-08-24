@@ -20,10 +20,6 @@ Appstore: _coming soon_
 - License
 
 ## 📷 Screenshots
-
-<!-- ![screenshot |360x640 ](screenshots/signIN.png)
-![screenshot | 360x640](screenshots/signUP.png) -->
-
 <img src='screenshots/signIN.png' width='360' height = '640'>
 <img src='screenshots/signUP.png' width='360' height = '640'>
 
