@@ -17,18 +17,18 @@ const signIn = ({navigation}) => {
     const [txtPhoneEmail, setPhoneEmail] = React.useState("");
     const [txtPassword, setPassword] = React.useState("");
     const [isSelected, setSelection] = useState(false);
-    const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('+96170838972')
+    const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('70838972')
     let errors = []
     // const [loginCredentialStorage, setLoginCredentialStorage] = React.useState('')
     const [phoneOrEmailSelected, SetphoneOrEmailSelected] = React.useState(0)
 
   const onPressPhone = () => {
     if(emailPhonePlaceHolder == 'eliashousseini@gmail.com')
-    setEmailPhonePlaceHolder('+96170838972')
+    setEmailPhonePlaceHolder('70838972')
     SetphoneOrEmailSelected(0)
   }
   const onPressEmail = () => {
-    if(emailPhonePlaceHolder == '+96170838972')
+    if(emailPhonePlaceHolder == '70838972')
     setEmailPhonePlaceHolder('eliashousseini@gmail.com')
     SetphoneOrEmailSelected(1)
   }
