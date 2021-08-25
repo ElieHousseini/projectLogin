@@ -121,7 +121,7 @@ const SignUp = ({navigation}) => {
           }
         } else if(phoneOrEmailSelected == 1){
           if(!validateEmailFormat(txtEmail)){
-            alert('phone format not valid')
+            alert('email format not valid')
           } else {
             getData().then(item => {
               if(item !== null || item !== undefined){
