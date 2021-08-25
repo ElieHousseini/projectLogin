@@ -56,7 +56,7 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}>
-                    <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="LoginSuccessful" component={LoginSuccessful} />
             <Stack.Screen name="SignUpSucceful" component={SignUpSucceful} />

@@ -40,8 +40,15 @@ const SignUp = ({navigation}) => {
       alert(e)
     }
   }
-  
 
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('@storage_Key')
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch(e) {
+      // error reading value
+    }
+  }
 
   const onPressSubmitCheck = ()=>{
       if(
@@ -67,12 +74,30 @@ const SignUp = ({navigation}) => {
       if (errors.length) { 
         alert('please fill all the fields and check all the boxes')
       } else {
-        storeData({
-          firstName: txtFirstName,
-          lastName: txtLastName,
-          emailPhone: txtEmail
+        // if(getData().)
+        getData().then(item => {
+          if(item !== null || item !== undefined){
+            if(item.emailPhone === txtEmail){
+              alert('User already exists')
+             } else {
+              storeData({
+                firstName: txtFirstName,
+                lastName: txtLastName,
+                emailPhone: txtEmail
+              })
+              navigation.navigate('SignUpSucceful')
+            }
+          } else {
+            storeData({
+              firstName: txtFirstName,
+              lastName: txtLastName,
+              emailPhone: txtEmail
+            })
+            navigation.navigate('SignUpSucceful')
+          }
+
         })
-        navigation.navigate('SignUpSucceful')
+
       }
   
   }
