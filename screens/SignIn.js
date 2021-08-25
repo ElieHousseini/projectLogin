@@ -11,7 +11,7 @@ import {
 
 import CheckBox from '@react-native-community/checkbox'
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getData, storeData} from '../libraries/asyncStorage'
 
 const signIn = ({navigation}) => {
     const [txtPhoneEmail, setPhoneEmail] = React.useState("");
@@ -19,8 +19,8 @@ const signIn = ({navigation}) => {
     const [isSelected, setSelection] = useState(false);
     const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('+96170838972')
     let errors = []
-    const [loginCredentialStorage, setLoginCredentialStorage] = React.useState('')
-    const [phoneOrEmailSelected, SetphoneOrEmailSelected] = React.useState()
+    // const [loginCredentialStorage, setLoginCredentialStorage] = React.useState('')
+    const [phoneOrEmailSelected, SetphoneOrEmailSelected] = React.useState(0)
 
   const onPressPhone = () => {
     if(emailPhonePlaceHolder == 'eliashousseini@gmail.com')
@@ -117,29 +117,10 @@ const signIn = ({navigation}) => {
 
 
         }
-  }
+  }    
 
   const onPressSignUp = () => {
     navigation.navigate('SignUp')
-  }
-
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('@storage_Key')
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
-    } catch(e) {
-      // error reading value
-    }
-  }
-
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem('@storage_Key', jsonValue)
-    } catch (e) {
-      // saving error
-      alert(e)
-    }
   }
 
     return(

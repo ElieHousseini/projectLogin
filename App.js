@@ -9,7 +9,9 @@ import SignUp  from './screens/SignUp';
 import SignIn  from './screens/SignIn';
 import LoginSuccessful from './screens/LoginSuccessful';
 import SignUpSucceful from './screens/SignUpSucceful';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import {getData} from './libraries/asyncStorage'
+
 
 const Stack = createNativeStackNavigator();
 
@@ -30,14 +32,6 @@ const App = () => {
     })
   }, [])
 
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('@storage_Key')
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
-    } catch(e) {
-      // error reading value
-    }
-  }
   if(login){
     return (
       <NavigationContainer>
