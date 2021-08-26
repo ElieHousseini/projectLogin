@@ -76,40 +76,41 @@ const SignUp = ({navigation}) => {
             alert('phone format not valid')
           } 
           else {
-            alert('phone format valid')
+            // alert('phone format valid')
             getData().then(item => {
-              if(item === null || item === undefined){
-                  storeData({
-                  firstName: txtFirstName,
-                  lastName: txtLastName,
-                  emailPhone: txtEmail
-                })
-                navigation.navigate('SignUpSucceful')
-              } else if(item.emailPhone === txtEmail){
-                     alert('User already exists')
-                }})
-
-              //   // if(item.emailPhone === txtEmail){
-              //   //   alert('User already exists')
-              //   //  } 
-              //   //  else {
-              //   //    alert('User does not exists')
-              //   //   // storeData({
-              //   //   //   firstName: txtFirstName,
-              //   //   //   lastName: txtLastName,
-              //   //   //   emailPhone: txtEmail
-              //   //   // })
-              //   //   navigation.navigate('SignUpSucceful')
-              //   // }
-              // } else {
-              //   // storeData({
-              //   //   firstName: txtFirstName,
-              //   //   lastName: txtLastName,
-              //   //   emailPhone: txtEmail
-              //   // })
-              //   // navigation.navigate('SignUpSucceful')
-              //   alert('item === null || item === undefined')
-              // }
+              if(item === null 
+                || item == undefined
+                ){
+                    storeData({
+                      firstName: txtFirstName,
+                      lastName: txtLastName,
+                      emailPhone: txtEmail
+                    })
+                    navigation.navigate('SignUpSucceful')
+              }
+              else{
+                  if(item.emailPhone !== null || item.emailPhone !== undefined){
+                    if(item.emailPhone == txtEmail)
+                      alert('User already exists')
+                      else {
+                        storeData({
+                          firstName: txtFirstName,
+                          lastName: txtLastName,
+                          emailPhone: txtEmail
+                      })
+                      navigation.navigate('SignUpSucceful')
+                      }
+                  } 
+                  else{
+                    storeData({
+                      firstName: txtFirstName,
+                      lastName: txtLastName,
+                      emailPhone: txtEmail
+                  })
+                  navigation.navigate('SignUpSucceful')
+                }
+              }}
+            )
           }
         } else if(phoneOrEmailSelected === 1){
           if(!validateEmailFormat(txtEmail)){
@@ -125,61 +126,27 @@ const SignUp = ({navigation}) => {
                   emailPhone: txtEmail
                 })
                 navigation.navigate('SignUpSucceful')
-              } else if(item.emailPhone === txtEmail){
+              } else if(item.emailPhone !== null || item.emailPhone !== undefined){
+                  if(item.emailPhone === txtEmail){
                      alert('User already exists')
-                   }})
+                  } else {
+                    storeData({
+                      firstName: txtFirstName,
+                      lastName: txtLastName,
+                      emailPhone: txtEmail
+                  })
+                  navigation.navigate('SignUpSucceful')
+                  }
+                } else {
+                  storeData({
+                    firstName: txtFirstName,
+                    lastName: txtLastName,
+                    emailPhone: txtEmail
+                })
+                    navigation.navigate('SignUpSucceful')
+                }
+                })
           }
-
-
-            //   // if(item.emailPhone === txtEmail){
-            //   //   alert('User already exists')
-            //   //  } 
-            //   //  else {
-            //   //    alert('User does not exists')
-            //   //   // storeData({
-            //   //   //   firstName: txtFirstName,
-            //   //   //   lastName: txtLastName,
-            //   //   //   emailPhone: txtEmail
-            //   //   // })
-            //   //   navigation.navigate('SignUpSucceful')
-            //   // }
-            // } else {
-            //   // storeData({
-            //   //   firstName: txtFirstName,
-            //   //   lastName: txtLastName,
-            //   //   emailPhone: txtEmail
-            //   // })
-            //   // navigation.navigate('SignUpSucceful')
-            //   alert('item === null || item === undefined')
-            // }
-
-
-          // if(!validateEmailFormat(txtEmail)){
-          //   alert('email format not valid')
-          // } else {
-          //   getData().then(item => {
-          //     if(item !== null || item !== undefined){
-          //       if(item.emailPhone === txtEmail){
-          //         alert('User already exists')
-          //        } else {
-          //         storeData({
-          //           firstName: txtFirstName,
-          //           lastName: txtLastName,
-          //           emailPhone: txtEmail
-          //         })
-          //         navigation.navigate('SignUpSucceful')
-          //       }
-          //     } else {
-          //       storeData({
-          //         firstName: txtFirstName,
-          //         lastName: txtLastName,
-          //         emailPhone: txtEmail
-          //       })
-          //       navigation.navigate('SignUpSucceful')
-          //     }
-    
-          //   })
-          // }
         }
       }
   
@@ -274,7 +241,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     // borderWidth: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
   },
   phoneMail:{
     flexDirection: 'row',

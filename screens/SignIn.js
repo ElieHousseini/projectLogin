@@ -13,6 +13,8 @@ import CheckBox from '@react-native-community/checkbox'
 
 import {getData, storeData} from '../libraries/asyncStorage'
 
+// import Recap from '../components/recaptcha'
+
 const signIn = ({navigation}) => {
     const [txtPhoneEmail, setPhoneEmail] = React.useState("");
     const [txtPassword, setPassword] = React.useState("");
