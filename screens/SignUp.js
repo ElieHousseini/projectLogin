@@ -177,7 +177,7 @@ const SignUp = ({navigation}) => {
         onPress={onPressPhone}
       >
         <View style={styles.textIcon}>
-        <Image style={styles.phoneImage} source={require('../Assets/smartphone.png')}/>
+        <Image source={require('../Assets/smartphone.png')}/>
         <Text>Via Phone </Text>
         </View>
       </TouchableOpacity>
@@ -185,7 +185,7 @@ const SignUp = ({navigation}) => {
         style={styles.emailButton}
         onPress={onPressEmail}
       >
-      <Image style={styles.phoneImage} source={require('../Assets/email.png')}/>
+      <Image source={require('../Assets/email.png')}/>
       </TouchableOpacity>
       </SafeAreaView>
 
@@ -227,66 +227,65 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     backgroundColor: '#1C82EB'
   },
   headerText:{
-    height: 40,
-    margin: 12,
+    height: 50,
     textAlign: 'center',
     color: 'white',
     fontSize: 30,
+    marginBottom: 30
   },
   input: {
-    height: 40,
-    margin: 12,
-    // borderWidth: 1,
+    marginBottom: 20,
     backgroundColor: '#FFFFFF',
+    borderRadius: 5
   },
   phoneMail:{
     flexDirection: 'row',
     height: 40,
-    marginLeft: 12,
-    marginRight: 12,
   },
   phoneButton: {
     alignItems: "center",
     backgroundColor: "#ECECEC",
     paddingTop: 10,
-    flex: 1
+    flex: 1,
+    borderTopStartRadius: 5,
+
   },
   emailButton: {
     alignItems: "center",
     backgroundColor: '#FFFFFF',
     paddingTop: 10,
-    flex: 1
+    flex: 1,
+    borderTopEndRadius: 5
   },
   textIcon:{
     flexDirection: 'row'
   },
   emailInput:{
-    height: 50,
-    marginLeft: 12,
-    marginRight: 12,
     borderWidth: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 5
+
   },
   confirmation:{
     flexDirection: 'row',
     alignItems: "center",
-    margin: 10,
+    marginBottom: 10,
+    marginTop: 10,
   },
   verification:{
     flexDirection: 'row',
     alignItems: "center",
-    margin: 10,
     backgroundColor: 'white',
     height: 50
   },
   verify:{
     backgroundColor: '#FD6A01',
-    margin: 10,
-    height: 50,
+    marginTop: 50,
     alignItems: "center",
     padding: 10,
   },
