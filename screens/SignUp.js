@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 10,
     marginRight: 10,
-    height: 40
+    height: 50
   },
   verifyText:{
     color: 'white',
