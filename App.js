@@ -11,20 +11,23 @@ import LoginSuccessful from './screens/LoginSuccessful';
 import SignUpSucceful from './screens/SignUpSucceful';
 
 
-import {getData} from './libraries/asyncStorage'
+import {storeData, getData} from './libraries/asyncStorage'
 
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [login, setLogin] = useState()
+  const [login, setLogin] = useState(null)
 
   useEffect(()=>{
     getData().then(item => {
       // console.log(item.login)
       if(item === null || item === undefined){
         setLogin(false)
+        storeData({
+          login: false
+        })
       }
       else{
         setLogin(item.login)
@@ -32,19 +35,10 @@ const App = () => {
 
     })
   }, [])
-
-  if(login){
-    return (
-      <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false
-        }}>
-          <Stack.Screen name="LoginSuccessful" component={LoginSuccessful} />
-      </Stack.Navigator>
-      </NavigationContainer>
-    )
-  } else {
+if(login == null){
+  return null
+}
+else if(login == false){
     return (
       <NavigationContainer>
       <Stack.Navigator
@@ -58,6 +52,17 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
     )
+  } else {
+      return (
+        <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false
+          }}>
+            <Stack.Screen name="LoginSuccessful" component={LoginSuccessful} />
+        </Stack.Navigator>
+        </NavigationContainer>
+      )
   }
 };
 
