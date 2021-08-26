@@ -200,6 +200,9 @@ const SignUp = ({navigation}) => {
           value={isSelected1}
           onValueChange={setSelection1}
           tintColors={{ true: 'white', false: 'white' }}
+          boxType='square'
+          style={{marginRight: 10, width: 20, height: 20, marginLeft: 10}}
+
       />
       <Text style={styles.TexttermsAndConditions}>I agree to User Terms and Conditions</Text>
       </SafeAreaView>
@@ -209,6 +212,8 @@ const SignUp = ({navigation}) => {
           onValueChange={setSelection2}
           tintColors={{ true: 'black', false: 'black' }}
           lineWidth={2.0}
+          boxType='square'
+          style={{marginRight: 10, marginLeft: 10, width: 20, height: 20}}
       />
       <Text>I am not a robot</Text>
       </SafeAreaView>
@@ -228,23 +233,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     paddingHorizontal: 20,
-    backgroundColor: '#1C82EB'
+    backgroundColor: '#1C82EB',
+    // paddingLeft: 10
   },
   headerText:{
     height: 50,
     textAlign: 'center',
     color: 'white',
     fontSize: 30,
-    marginBottom: 30
+    marginBottom: 30,
   },
   input: {
     marginBottom: 20,
     backgroundColor: '#FFFFFF',
-    borderRadius: 5
+    borderRadius: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
   },
   phoneMail:{
     flexDirection: 'row',
     height: 40,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
   },
   phoneButton: {
     alignItems: "center",
@@ -268,7 +280,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: 'white',
     borderBottomRightRadius: 5,
-    borderBottomLeftRadius: 5
+    borderBottomLeftRadius: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
 
   },
   confirmation:{
@@ -276,18 +291,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
     marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
+    
   },
   verification:{
     flexDirection: 'row',
     alignItems: "center",
     backgroundColor: 'white',
-    height: 50
+    height: 50,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
   },
   verify:{
     backgroundColor: '#FD6A01',
     marginTop: 50,
     alignItems: "center",
     padding: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40
   },
   verifyText:{
     color: 'white',

@@ -166,10 +166,11 @@ const signIn = ({navigation}) => {
           tintColors={{ true: 'white', false: 'white' }}
           lineWidth={2.0}
           boxType='square'
-          // style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
+          style={{marginRight: 10, marginLeft: 10, width: 20, height: 20}}
           // style={{width: 2}}
       />
-      <SafeAreaView style={{flexDirection: 'row', width: '90%', justifyContent:'space-between'}}>
+      <SafeAreaView style={{flexDirection: 'row', width: '80%', justifyContent:'space-between', marginTop: 10,
+    marginBottom: 10}}>
         <View>
         <Text style = {styles.termsAndConditionsText1}>Remember me</Text>
         </View>
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "center",
       paddingHorizontal: 20,
-      backgroundColor: '#1C82EB'
+      backgroundColor: '#1C82EB',
     },
     headerText:{
       height: 50,
@@ -229,6 +230,9 @@ const styles = StyleSheet.create({
       marginBottom: 30
     },
     input: {
+      marginLeft: 10,
+      marginRight: 10,
+      height: 40,
       // height: 40,
       // margin: 12,
       // borderWidth: 1,
@@ -246,6 +250,9 @@ const styles = StyleSheet.create({
       // marginLeft: 12,
       // marginRight: 12,
       height: 40,
+      marginLeft: 10,
+      marginRight: 10,
+      height: 40
     },
     phoneButton: {
       alignItems: "center",
@@ -259,7 +266,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#FFFFFF',
       paddingTop: 10,
       flex: 1,
-      borderTopEndRadius: 5
+      borderTopEndRadius: 5.
     },
     textIcon:{
       flexDirection: 'row'
@@ -274,7 +281,10 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       borderBottomRightRadius: 5,
       borderBottomLeftRadius: 5,
-      marginBottom: 10
+      marginBottom: 10,
+      marginLeft: 10,
+      marginRight: 10,
+      height: 40
     },
     confirmation:{
       flexDirection: 'row',
@@ -289,6 +299,9 @@ const styles = StyleSheet.create({
       // height: 50,
       alignItems: "center",
       padding: 10,
+      marginLeft: 10,
+      marginRight: 10,
+      height: 40
     },
     verifyText:{
       color: 'white',
@@ -336,7 +349,8 @@ const styles = StyleSheet.create({
     },
     checkbox: {
       marginRight: 10,
-      width: 20, height: 20,
+      width: 20, 
+      height: 20,
       // backgroundColor: 'red',
       // height: 12
     },
