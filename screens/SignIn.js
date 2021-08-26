@@ -166,10 +166,10 @@ const signIn = ({navigation}) => {
           tintColors={{ true: 'white', false: 'white' }}
           lineWidth={2.0}
           boxType='square'
-          style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
+          // style={{marginRight: 20, marginLeft: 10, width: 20, height: 20}}
           // style={{width: 2}}
       />
-      <SafeAreaView style={{flexDirection: 'row', width: '80%', justifyContent:'space-between'}}>
+      <SafeAreaView style={{flexDirection: 'row', width: '90%', justifyContent:'space-between'}}>
         <View>
         <Text style = {styles.termsAndConditionsText1}>Remember me</Text>
         </View>
@@ -217,60 +217,76 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: "center",
-      paddingHorizontal: 10,
+      paddingHorizontal: 20,
       backgroundColor: '#1C82EB'
     },
     headerText:{
-      height: 40,
-      margin: 12,
+      height: 50,
+      // margin: 12,
       textAlign: 'center',
       color: 'white',
       fontSize: 30,
+      marginBottom: 30
     },
     input: {
-      height: 40,
-      margin: 12,
+      // height: 40,
+      // margin: 12,
       // borderWidth: 1,
-      backgroundColor: '#FFFFFF'
+      // backgroundColor: '#FFFFFF'
+
+      // marginBottom: 10,
+      backgroundColor: '#FFFFFF',
+      borderRadius: 5,
+      marginTop: 10
+
     },
     phoneMail:{
       flexDirection: 'row',
       // paddingHorizontal: 13,
-      marginLeft: 12,
-      marginRight: 12,
+      // marginLeft: 12,
+      // marginRight: 12,
       height: 40,
     },
     phoneButton: {
       alignItems: "center",
       backgroundColor: "#ECECEC",
       paddingTop: 10,
-      flex: 1
+      flex: 1,
+      borderTopStartRadius: 5,
     },
     emailButton: {
       alignItems: "center",
       backgroundColor: '#FFFFFF',
       paddingTop: 10,
-      flex: 1
+      flex: 1,
+      borderTopEndRadius: 5
     },
     textIcon:{
       flexDirection: 'row'
     },
     emailInput:{
-      height: 50,
-      marginLeft: 12,
-      marginRight: 12,
+      // height: 50,
+      // marginLeft: 12,
+      // marginRight: 12,
+      // borderWidth: 1,
+      // backgroundColor: 'white'
       borderWidth: 1,
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      borderBottomRightRadius: 5,
+      borderBottomLeftRadius: 5,
+      marginBottom: 10
     },
     confirmation:{
       flexDirection: 'row',
       alignItems: "center",
-      margin: 10,
+      // margin: 10,
+      // marginBottom: 10,
+      // marginTop: 10,
     },
     verify:{
       backgroundColor: '#FD6A01',
-      margin: 10,
-      height: 50,
+      // margin: 10,
+      // height: 50,
       alignItems: "center",
       padding: 10,
     },
@@ -327,9 +343,11 @@ const styles = StyleSheet.create({
     termsAndConditions:{
       flexDirection: 'row',
       alignItems: "center",
-      margin: 10,
+      marginTop: 10,
+      marginBottom: 10
+      // margin: 10,
       // backgroundColor: 'white',
-      height: 50,
+      // height: 50,
       
     },
     termsAndConditionsText1: {
