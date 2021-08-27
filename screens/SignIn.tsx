@@ -7,7 +7,7 @@ import {getData, storeData} from '../libraries/asyncStorage'
 
 // import Recap from '../components/recaptcha'
 
-const signIn = ({navigation}) : JSX.Element => {
+const signIn = ({navigation}): JSX.Element => {
     const [txtPhoneEmail, setPhoneEmail] = useState<string>("")
     const [txtPassword, setPassword] = useState<string>("")
     const [isSelected, setSelection] = useState<boolean>(false)
@@ -37,7 +37,8 @@ const signIn = ({navigation}) : JSX.Element => {
     return expression.test(String(email).toLowerCase())
 }
   const validatePhoneFormat = (phone: string): boolean => {
-    const expression = /^[0-9\b]+$/
+    // const expression = /^[0-9\b]+$/
+    const expression = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
     return expression.test(phone)
   }
 
