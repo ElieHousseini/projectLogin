@@ -1,5 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+interface MyDataInterface {
+  firstName?: string,
+  lastName?: string,
+  emailPhone?: string,
+  login?: boolean
+}
+
 export const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('@storage_Key')
@@ -10,7 +17,8 @@ export const getData = async () => {
     }
   }
 
-export  const storeData = async (value) => {
+
+export  const storeData = async (value: MyDataInterface) => {
     try {
       const jsonValue = JSON.stringify(value)
       await AsyncStorage.setItem('@storage_Key', jsonValue)

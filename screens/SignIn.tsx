@@ -1,13 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Image
-} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView,StyleSheet,Text,TextInput,TouchableOpacity,View,Image} from 'react-native';
 
 import CheckBox from '@react-native-community/checkbox'
 
@@ -16,21 +8,21 @@ import {getData, storeData} from '../libraries/asyncStorage'
 // import Recap from '../components/recaptcha'
 
 const signIn = ({navigation}) => {
-    const [txtPhoneEmail, setPhoneEmail] = React.useState("");
-    const [txtPassword, setPassword] = React.useState("");
-    const [isSelected, setSelection] = useState(false);
-    const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = React.useState('70838972')
-    let errors = []
+    const [txtPhoneEmail, setPhoneEmail] = useState<string>("")
+    const [txtPassword, setPassword] = useState<string>("")
+    const [isSelected, setSelection] = useState<boolean>(false)
+    const [emailPhonePlaceHolder, setEmailPhonePlaceHolder] = useState<string>('+96170838972')
+    let errors : string[] = []
     // const [loginCredentialStorage, setLoginCredentialStorage] = React.useState('')
-    const [phoneOrEmailSelected, SetphoneOrEmailSelected] = React.useState(0)
+    const [phoneOrEmailSelected, SetphoneOrEmailSelected] = useState<0 | 1>(0)
 
   const onPressPhone = () => {
     if(emailPhonePlaceHolder == 'eliashousseini@gmail.com')
-    setEmailPhonePlaceHolder('70838972')
+    setEmailPhonePlaceHolder('+96170838972')
     SetphoneOrEmailSelected(0)
   }
   const onPressEmail = () => {
-    if(emailPhonePlaceHolder == '70838972')
+    if(emailPhonePlaceHolder == '+96170838972')
     setEmailPhonePlaceHolder('eliashousseini@gmail.com')
     SetphoneOrEmailSelected(1)
   }
@@ -39,12 +31,12 @@ const signIn = ({navigation}) => {
     alert('You forgot your password.')
   }
 
-  const validateEmailFormat = (email) => {
+  const validateEmailFormat = (email: string) => {
     const expression = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([\t]*\r\n)?[\t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([\t]*\r\n)?[\t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
     return expression.test(String(email).toLowerCase())
 }
-  const validatePhoneFormat = (phone) => {
+  const validatePhoneFormat = (phone: string) => {
     const expression = /^[0-9\b]+$/
     return expression.test(phone)
   }
@@ -134,7 +126,7 @@ const signIn = ({navigation}) => {
         onPress={onPressPhone}
       >
         <View style={styles.textIcon}>
-        <Image style={styles.phoneImage} source={require('../Assets/smartphone.png')}/>
+        <Image source={require('../Assets/smartphone.png')}/>
         <Text>Via Phone </Text>
         </View>
       </TouchableOpacity>
@@ -142,7 +134,7 @@ const signIn = ({navigation}) => {
         style={styles.emailButton}
         onPress={onPressEmail}
       >
-      <Image style={styles.phoneImage} source={require('../Assets/email.png')}/>
+      <Image source={require('../Assets/email.png')}/>
       </TouchableOpacity>
       </SafeAreaView>
       
@@ -167,7 +159,6 @@ const signIn = ({navigation}) => {
           lineWidth={2.0}
           boxType='square'
           style={{marginRight: 10, marginLeft: 10, width: 20, height: 20}}
-          // style={{width: 2}}
       />
       <SafeAreaView style={{flexDirection: 'row', width: '80%', justifyContent:'space-between', marginTop: 10,
     marginBottom: 10}}>
@@ -252,7 +243,6 @@ const styles = StyleSheet.create({
       height: 40,
       marginLeft: 10,
       marginRight: 10,
-      height: 40
     },
     phoneButton: {
       alignItems: "center",

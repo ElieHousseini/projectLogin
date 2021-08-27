@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react'
 import {
-} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // Screens import
-import SignUp  from './screens/SignUp';
-import SignIn  from './screens/SignIn';
-import LoginSuccessful from './screens/LoginSuccessful';
-import SignUpSucceful from './screens/SignUpSucceful';
+import SignUp  from './screens/SignUp'
+import SignIn  from './screens/SignIn'
+import LoginSuccessful from './screens/LoginSuccessful'
+import SignUpSucceful from './screens/SignUpSucceful'
 
 
 import {storeData, getData} from './libraries/asyncStorage'
@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [login, setLogin] = useState(null)
+  const [login, setLogin] = useState<boolean | null>(null)
 
   useEffect(()=>{
     getData().then(item => {

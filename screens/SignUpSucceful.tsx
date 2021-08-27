@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 
-const SignUpSucceful = ({navigation}) => {
+const SignUpSucceful = () => {
     return <>
     <Text>SignUpSucceful</Text>
     </>

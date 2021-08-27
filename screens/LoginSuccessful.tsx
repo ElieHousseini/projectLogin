@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import {
   Text,
-} from 'react-native';
+} from 'react-native'
 
 
-const LoginSuccessful = ({navigation}) => {
+const LoginSuccessful = () => {
     return <>
     <Text>LoginSuccessful</Text>
     </>
