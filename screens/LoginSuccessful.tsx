@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 
 
-const LoginSuccessful = () => {
+const LoginSuccessful = ():JSX.Element  => {
     return <>
     <Text>LoginSuccessful</Text>
     </>

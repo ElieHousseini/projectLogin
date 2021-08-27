@@ -16,7 +16,7 @@ import {storeData, getData} from './libraries/asyncStorage'
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const App = () :JSX.Element => {
 
   const [login, setLogin] = useState<boolean | null>(null)
 
